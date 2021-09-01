@@ -7,51 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Archive</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .result-amount-bar {
+            background-color: rgb(204, 248, 234);
+            border: 1px solid green;
+            padding: 5px 10px;
+            border-radius: 25px;
+            font-size: 16px;
+            margin: 0 auto 10px auto;
+            display: inline;
+
+        }
+    </style>
 </head>
 
 <body class="bg-light">
-    <!-- food search field -->
-    <div class="container py-4">
+    <!-- Book search field -->
+    <div class="container pt-4 pb-2">
         <h1 class="text-center text-uppercase text-success">Search your desired book</h1>
-        <div class="input-group mb-3 w-50 mx-auto">
-            <input id="search-input" type="text" class="form-control" placeholder="Enter food name"
+        <div class="input-group mb-3 w-75 mx-auto mw-100">
+            <input id="search-input" type="text" class="form-control" placeholder="Enter boook or author name"
                 aria-label="Recipient's username" aria-describedby="button-addon2">
             <button onclick="searchBookByName()" class="btn btn-outline-success" type="button"
                 id="button-addon2">Search</button>
         </div>
     </div>
-    <div id="result-amount"></div>
-    <div id="div" class="container modal" tabindex="-1">
-        
-    </div>
-    <!-- songle food details  -->
-    <div id="food-details" class="container w-50 mx-auto pb-2">
-        <!-- <div class="bg-success card-header text-center">
-                <h5 class="card-title">GOOD FOOD GOOD HEALTH</h5>
-            </div>
-            <div class="card-body">
-                
-                <img src="images/food.jpg" class="card-img-top" alt="...">
-                <p class="card-text">If you talk about food just as much as you eat it, you're in good company. We've got famous chefs and stars—Julia Child, Sophia Loren, Virginia Woolf—to thank for some of the greatest food quotes of all time. Do what you will with these: Memorize them, pin them, or print them out and tack them up all over your kitchen.</p>
-                
-            </div>
-            <div class="card-footer text-muted bg-success">
-            <a href="https://www.youtube.com/" class="btn btn-dark text-center">Watch recipe</a>
-            </div> -->
-    </div>
-    <!-- food search result  -->
+    <div id="result-amount" class="d-flex justify-content-center"></div>
+        <!-- inner Html added by js  -->
+    </div> -->
+    <!-- Book search result section  -->
     <div class="container">
-        <div id="search-result" class="row row-cols-1 row-cols-md-4 g-4">
-            <!-- <div class="col">
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div> -->
+        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- inner Html added by js  -->
         </div>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
