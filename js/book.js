@@ -22,23 +22,31 @@ const displaySearchResult = (books, seracahValue) => {
     // Show search amount or message  
     const searchDiv = document.getElementById('result-amount');
     searchDiv.innerHTML = '';
-    const h3 = document.createElement('h3');
-    h3.classList.add('result-amount-bar');
-    h3.innerText = `${books.numFound} Results found containg '${seracahValue}'
-    ${books.docs.length} Result shown`;
-    searchDiv.appendChild(h3);
+    
+    const found = document.createElement('h3');
+    found.classList.add('result-amount-bar');
+    found.innerText = `${books.numFound} Results found containg '${seracahValue}'`;
+
+    const shown = document.createElement('h3');
+    shown.classList.add('result-amount-bar');
+    shown.innerText = `${books.docs.length} Results shown`;
+
+    searchDiv.appendChild(found);
+    searchDiv.appendChild(shown);
     // show search Result 
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     books.docs.forEach(book => {
-        const div = document.createElement('div');
-        div.classList.add('col');
+        //Handleing undefined values
         if (book.author_name === undefined) book.author_name = ['Unknown Author'];
         if (book.first_publish_year === undefined) book.first_publish_year = 'Unknown';
         if (book.publisher === undefined) book.publisher = ['No Publisher found'];
+        // loading innerHtmal for search result
+        const div = document.createElement('div');
+        div.classList.add('col');
         div.innerHTML = `
-        <div class="card shadow-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-            <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg" class="card-img-top p-3" alt="Image Not Found">
+            <div class="card shadow-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg" class="card-img-top p-3" alt="Image Not Found">
                 <div class="card-body">
                     <h5 class="card-title mb-3">Book Name:<b class="text-success"> ${book.title.slice(0, 100)}</b></h5>
                     <h6 class="card-text"><b class="text-success">Author Name: </b>${book.author_name[0]}</h6>
@@ -55,4 +63,7 @@ const getCover = (cover_i) => {
     if (true) {
         console.log(typeof url);
     }
+}
+const readmore = (bookUrl) => {
+
 }
