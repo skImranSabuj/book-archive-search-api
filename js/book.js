@@ -33,18 +33,17 @@ const displaySearchResult = (books, seracahValue) => {
     books.docs.forEach(book => {
         const div = document.createElement('div');
         div.classList.add('col');
-        // let publisher='';
-        // book.publisher.forEach(pub =>{
-        //     publisher=publisher+pub+' ';
-        // });
+        if (book.author_name === undefined) book.author_name = 'Unknown Author';
+        if (book.first_publish_year === undefined) book.first_publish_year = 'In the past';
+        if (book.publisher === undefined) book.publisher = 'No Publisher found';
         div.innerHTML = `
-        <div class="card" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-            <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg" class="card-img-top" alt="Image Not Found">
+        <div class="card shadow-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+            <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg" class="card-img-top p-3" alt="Image Not Found">
                 <div class="card-body">
-                    <h3 class="card-title text-center text-success mb-3">${book.title}</h3>
-                    <h6 class="card-text"><b class="text-primary">Author Name:</b> ${book.author_name}</h6>
-                    <h6 class="card-text"><b class="text-warning">First Published:</b> ${book.first_publish_year} </h6>
-                    <p class="card-text"><b class="text-info">Publishers: </b> ${book.publisher}</p>
+                    <h5 class="card-title mb-3"> <b class="text-success">Book Name:</b> ${book.title.slice(0, 100)}</h5>
+                    <h6 class="card-text"><b class="text-success">Author Name:</b> ${book.author_name[0]}</h6>
+                    <h6 class="card-text"><b class="text-success">First Published:</b> ${book.first_publish_year} </h6>
+                    <p class="card-text"><b class="text-success">Publishers: </b> ${book.publisher[0]}</p>
                 </div>
             </div>
     `;
