@@ -9,19 +9,23 @@ const searchBookByName = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => displaySearchResult(data, seracahValue))
+            .catch(error => showError())
     }
     else {
-        document.getElementById('result-amount').innerHTML = `
-            <h3 class="result-amount-bar">Please write book name or author name then search</h3>
+        searchDiv().innerHTML = `
+            <h3 class="result-error-bar">Please write book name or author name then search</h3>
         `;
     }
 }
+const showError = () => {
+    searchDiv().innerHTML = `
+            <h3 class="result-error-bar">Something went wrong. Please try again later</h3>
+        `;
+}
 const displaySearchResult = (books, seracahValue) => {
-    console.log(books);
-
     // Show search amount or message  
-    const searchDiv = document.getElementById('result-amount');
-    searchDiv.innerHTML = '';
+    const divContainer = searchDiv();
+    divContainer.innerHTML = '';
 
     const found = document.createElement('h3');
     found.classList.add('result-amount-bar');
@@ -31,8 +35,8 @@ const displaySearchResult = (books, seracahValue) => {
     shown.classList.add('result-amount-bar');
     shown.innerText = `${books.docs.length} Results shown`;
 
-    searchDiv.appendChild(found);
-    searchDiv.appendChild(shown);
+    divContainer.appendChild(found);
+    divContainer.appendChild(shown);
     // show search Result 
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
@@ -49,10 +53,10 @@ const displaySearchResult = (books, seracahValue) => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-            <div class="card shadow-lg border-lelt border-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-                <img src=${imgUrl} class="card-img-top p-3" alt="Image Not Found">
+            <div class="card shadow-lg border-lelt border-dark">
+                <img src=${imgUrl} class="card-img-top p-3" alt="Image of book">
                 <div class="card-body">
-                    <h5 class="card-title mb-3 bg-light p-2 rounded"><b class="text-success">Book Name: </b> ${book.title.slice(0, 100)}</h5>
+                    <h5 class="card-title mb-2 bg-light p-2 rounded"><b class="text-success">Book Name: </b> ${book.title}</h5>
                     <div class="details bg-light p-2 rounded">
                         <h6 class="card-text"><b class="text-success">Author Name: </b>${book.author_name[0]}</h6>
                         <h6 class="card-text"><b class="text-success">First Published:</b> ${book.first_publish_year} </h6>
@@ -64,12 +68,6 @@ const displaySearchResult = (books, seracahValue) => {
         searchResult.appendChild(div);
     })
 }
-const getCover = (cover_i) => {
-    const url = `https://covers.openlibrary.org/b/id/${cover_i}-L.jpg`;
-    if (true) {
-        console.log(typeof url);
-    }
-}
-const readmore = (bookUrl) => {
-
+const searchDiv = () => {
+    return document.getElementById('result-amount');
 }
