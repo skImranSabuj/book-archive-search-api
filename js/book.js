@@ -1,5 +1,12 @@
+const serachInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('button-addon2');
+serachInput.addEventListener("keypress", function (event) {
+    if (event.key === 'Enter') {
+        searchBtn.click();
+    }
+})
 const searchBookByName = () => {
-    const serachInput = document.getElementById('search-input');
+    // const serachInput = document.getElementById('search-input');
     const seracahValue = serachInput.value;
     if (seracahValue !== '') {
         // clear data 
